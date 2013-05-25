@@ -1,17 +1,16 @@
 {
-  "name": "Libros",
+  "name": "Detmer",
   "version": "0.0.0",
-  "description": "CMS for Libros",
+  "description": "CMS for Detmer",
   "main": "server.js",
   "scripts": {
     "test": "make test"
   },
   "repository": "",
   "author": "Sean Hess",
-  "license": "BSD",
+  "license": "Commercial",
   "dependencies": {
     "express": "~3.0.6",
-    "rethinkdb": "~1.2.6-1",
     "bower": "~0.6.8",
     "stylus": "~0.32.0",
     "nib": "~0.9.1",
@@ -25,7 +24,8 @@
     "typescript": "~0.8.2",
     "underscore": "~1.4.4",
     "connect-basic-auth": "~0.1.0",
-    "browserify-middleware": "~1.10.0"
+    "browserify-middleware": "~1.10.0",
+    "rethinkdb": "~1.5.0-0"
   },
   "devDependencies": {
     "mocha": "~1.8.1",

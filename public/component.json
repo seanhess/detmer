@@ -3,8 +3,6 @@
   "version": "0.0.1",
   "main": "./path/to/main.css",
   "directory": "public/components",
-  "dependencies": {
-    "DefinitelyTyped": "0909e00b859b3b0f70931a5fd24bb649246f3ef8"
-  }
+  "dependencies": {}
 }
 

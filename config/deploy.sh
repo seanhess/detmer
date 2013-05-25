@@ -20,12 +20,12 @@ stop rethinkdb
 start rethinkdb
 
 # set up node server
-sudo cp config/server.upstart.conf /etc/init/libros.conf
-sudo stop libros
-sudo start libros
+sudo cp config/server.upstart.conf /etc/init/detmer.conf
+sudo stop detmer
+sudo start detmer
 
 # set up nginx
-sudo cp config/nginx.conf /etc/nginx/conf.d/libros.conf
+sudo cp config/nginx.conf /etc/nginx/conf.d/detmer.conf
 sudo service nginx stop
 sudo service nginx start
 

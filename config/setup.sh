@@ -5,7 +5,7 @@ apt-get -y install git nginx
 apt-get -y install python-software-properties python g++ make
 add-apt-repository -y ppa:chris-lea/node.js
 apt-get -y update
-apt-get -y install nodejs npm
+apt-get -y install nodejs
 
 add-apt-repository -y ppa:rethinkdb/ppa
 apt-get -y update
