@@ -1,5 +1,4 @@
 ///<reference path='../def/rethinkdb.d.ts'/>
-///<reference path='../def/async.d.ts'/>
 ///<reference path='../def/node-uuid.d.ts'/>
 ///<reference path='../def/knox.d.ts'/>
 ///<reference path='../types.ts'/>
@@ -10,7 +9,6 @@
 import r = module('rethinkdb')
 import fs = module('fs')
 import path = module('path')
-import async = module('async')
 import uuid = module('node-uuid')
 import store = module('../service/s3')
 

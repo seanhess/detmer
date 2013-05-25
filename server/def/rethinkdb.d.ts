@@ -24,7 +24,7 @@ declare module "rethinkdb" {
   interface IHost {
     host:string;
     port:number;
-    db:string;
+    db?:string;
   }
 
   interface OnConnect {
@@ -204,14 +204,14 @@ declare module "rethinkdb" {
     not():BoolExpression;
   }
 
-  interface ValueExpression extends Expression {
+  interface ValueExpression extends Expression, ImmediateOperation {
     gt(value:any):BoolExpression;
     ge(value:any):BoolExpression;
     lt(value:any):BoolExpression;
     le(value:any):BoolExpression;
   }
 
-  interface NumberExpression extends ValueExpression {
+  interface NumberExpression extends ValueExpression, ImmediateOperation {
     run(conn:Connection, cb:(err:Error, num:number) => void);
 
     add(n:number):NumberExpression;
@@ -221,7 +221,7 @@ declare module "rethinkdb" {
     mod(n:number):NumberExpression;
   }
 
-  interface ObjectExpression extends ValueExpression {
+  interface ObjectExpression extends ValueExpression, ImmediateOperation {
     run(conn:Connection, cb:(err:Error, obj:Object) => void);
 
     (prop:string):ObjectExpression;
@@ -230,11 +230,17 @@ declare module "rethinkdb" {
     contains(prop:string):BoolExpression;
   }
 
-  interface WriteOperation {
+  // anything but a cursor
+  interface ImmediateOperation {
+    doesNotWorkWithCursors: bool; // will ignore this, but CursorOperation won't get through
+    run(conn:Connection, cb:(err:Error, value:any) => void);
+  }
+
+  interface WriteOperation extends ImmediateOperation {
     run(conn:Connection, cb:(err:Error, result:WriteResult) => void);
   }
 
-  interface AdminOperation {
+  interface AdminOperation extends ImmediateOperation {
     run(conn:Connection, cb:(err:Error, result:AdminResult) => void);
   }
 
@@ -242,9 +248,10 @@ declare module "rethinkdb" {
     run(conn:Connection, cb:(err:Error, cursor:Cursor) => void);
   }
 
-  interface NamesOperation {
+  interface NamesOperation extends ImmediateOperation {
     run(conn:Connection, cb:(err:Error, names:string[]) => void);
   }
+
 
   interface Aggregator {}
   interface Sort {}

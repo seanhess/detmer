@@ -1,4 +1,7 @@
-///<reference path="def/angular.d.ts"/>
+/// <reference path="def/DefinitelyTyped/jquery/jquery.d.ts"/>
+/// <reference path="def/DefinitelyTyped/angularjs/angular.d.ts"/>
+/// <reference path="def/DefinitelyTyped/angularjs/angular-resource.d.ts"/>
+/// <reference path="def/DefinitelyTyped/underscore/underscore.d.ts"/>
 
 import test = module('controls/test')
 
