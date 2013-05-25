@@ -75,14 +75,15 @@ app.use(connect.session({secret: 'funky monkey', key: 'blah', store:new connect.
 app.get('/main.js', browserify('../public/app.js'))
 
 /// CLIENTS //////////////////////////
-app.get('/clients', function(req, res) {
+app.get('/api/clients', function(req, res) {
   console.log("GET YER CLIENTS")
   db.toArray(Clients.all()).then(send(res), err(res))
 })
 
-// app.post('/clients', function(req, res) {
-//   db.run(Clients.add(req.body)).then(ok(res), err(res))
-// })
+app.post('/api/clients', function(req, res) {
+  console.log("NEW CLIENT", req.body)
+  db.run(Clients.add(req.body)).then(ok(res), err(res))
+})
 
 
 /// GENRES ////////////////////////////
