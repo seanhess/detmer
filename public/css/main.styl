@@ -1,0 +1,91 @@
+//carbon = url(/images/carbon_fibre.png) #333
+//aluminum = url(/images/brushed_alu_dark.png) #888
+//aluminum = #888
+
+body, html
+  font-family "Helvetica"
+  font-size 14px
+
+
+.admin .books
+  .book
+    .img
+      display inline-block
+      width 15px
+    img
+      height 1.2em
+      display inline-block
+
+.book_edit
+  textarea
+    width 500px
+    height 200px
+  div
+    min-height 25px
+  label
+    clear both
+    //margin-top 8px
+    //margin-bottom 2px
+    display block
+    float left
+    width 100px
+    &.type
+      height 2em
+  div.cover
+    display inline-block
+    border dashed 2px #777
+    width 100px
+    min-height 80px
+    position relative
+    img
+      width 100px
+    .clear
+      position absolute
+      right 3px
+      bottom 3px
+  .genre a
+    font-size 0.8em
+  .files
+    clear both
+    min-height 200px
+    border dashed 2px #888
+    padding 10px
+    position relative
+    padding-bottom 25px
+    &.drag
+      border solid 2px #33A
+      background-color #DDF
+    .file
+      height 25px
+      &.loading
+        .rename
+          display: none
+        .external_link
+          display: none
+        &.active a
+          color #F00
+        a
+          color #AAA
+          text-decoration none
+          pointer-events none
+          cursor normal
+      input
+        display inline-block
+        width 300px
+      //&.loading a
+    .instructions
+      position absolute
+      bottom 4px
+      color #888
+      pointer-events none
+
+.external_link
+  background url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=") center right no-repeat
+  min-width 10px
+  min-height 10px
+  display inline-block
+      
+
+
+
+

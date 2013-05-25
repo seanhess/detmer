@@ -1,0 +1,79 @@
+<div class="book_edit">
+
+<!--<pre>{{files}}</pre>-->
+
+<div>
+  <!--<label>bookId</label>-->
+  <!--<div><input disabled ng-model="book.bookId"></div>-->
+
+  <div><a href="/books/{{book.bookId}}" target="_blank">Data</a></div>
+  <br/>
+
+  <label>productId</label>
+  <div>{{book.bookId | toProductId}}</div>
+  
+  <label>popularity</label>
+  <div>{{book.popularity}}</div>
+  
+  <label>featured</label>
+  <div><input type="checkbox" ng-model="book.featured"/></div>
+
+  <label>title</label>
+  <div><input ng-model="book.title" placeholder="A Tale of Two Cities"/></div>
+
+  <label class="cover">cover</label>
+  <div>
+    <div class="cover" dragupload="onDropCoverImage">
+      <img ng-show="book.imageUrl" ng-src="{{book.imageUrl}}">
+      <button ng-show="book.imageUrl" class="clear" ng-click="clearImage()">clear</button>
+    </div>
+  </div>
+
+  <label>author</label>
+  <div><input ng-model="book.author" placeholder="Charles Dickens"/></div>
+
+  <label>genre</label>
+  <div ng-hide="editingNewGenre" class="genre">
+    <select 
+      ng-model="book.genre"
+      ng-options="genre.name as genre.name for genre in genres">
+    </select>
+    <a ng-click="toggleEditNewGenre()">New Genre</a>
+  </div>
+  <div ng-show="editingNewGenre" class="genre">
+    <input ng-model="book.genre" placeholder="Comedy">
+    <a ng-click="toggleEditNewGenre()">Cancel</a>
+  </div>
+
+  <label>description</label>
+  <div><textarea ng-model="book.description" placeholder="This book is awesome"></textarea></div>
+
+  <label>{{book.textFiles}} text files</label>
+  <label>{{book.audioFiles}} audio files</label>
+
+  <div class="files" dragupload="onDrop">
+    <div class="instructions">Drop files here (.mp3 or .html)</div>
+
+    <div class="file" ng-class="{loading: isLoading(file), active: isFileUploadActive(file)}" ng-repeat="file in book.files | orderBy:'name'">
+      <div ng-hide="isEditing(file)">
+        <small><button class="remove" ng-click="removeFile(file)">x</button> </small>
+        <small><button class="rename" ng-click="editFile(file)">rename</button></small>
+        <a href="{{file.url}}" target="_blank">{{file.name}}.{{file.ext}}</a>
+        <!--<a class="external_link" href="{{file.url}}"></a>-->
+      </div>
+      <form ng-show="isEditing(file)">
+        <input ng-model="editing.name">
+        <button ng-click="updateFile(file)">Save</button>
+        <a ng-click="cancelEdit()">Cancel</a>
+      </form>
+    </div>
+  </div>
+
+  <p>
+    <input type="submit" ng-disabled="!isBookValid()" ng-click="save()" value="Save"></input>
+    <button ng-disabled="!book" ng-click="remove()">Remove</button>
+  </p>
+
+</div>
+
+</div>

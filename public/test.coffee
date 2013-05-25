@@ -1,0 +1,2 @@
+henry = (bob) ->
+  wha

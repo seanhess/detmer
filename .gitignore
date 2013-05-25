@@ -18,6 +18,7 @@ xcuserdata
 node_modules
 public/components
 *.js
+*.js.map
 
 *.lock
 

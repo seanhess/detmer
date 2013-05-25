@@ -1,0 +1,48 @@
+<div class="admin">
+<h1>Libros Admin</h1>
+
+<!--<pre>{{books}}</pre>-->
+
+<div class="genres">
+  <h3>Genres</h3>
+  <div ng-repeat="genre in genres">
+    <a href="/admin/genres/{{genre.name}}/books">{{genre.name}}</a>
+  </div>
+</div>
+
+<div class="authors">
+  <h3>Authors</h3>
+  <div ng-repeat="author in authors">
+    <a href="/admin/authors/{{author.name}}/books">{{author.name}}</a>
+  </div>
+</div>
+
+<div class="books">
+<h3>Books</h3>
+<table>
+  <tr><th>title</th><th>pop</th><th>text</th><th>audio</th></tr>
+  <tr class="book" ng-repeat="book in books">
+    <td>
+      <span class="img"><img ng-src="{{book.imageUrl}}"></img></span>
+      <a href="/admin/books/{{book.bookId}}">{{book.title}}</a>
+      <span ng-show="book.featured">★ </span>
+    </td>
+    <td>{{book.popularity}}</td>
+    <td>{{book.textFiles}}</td>
+    <td>{{book.audioFiles}}</td>
+  </tr>
+</table>
+
+<p><button ng-click="createBook()">Add Book</button></p>
+</div>
+
+
+<!-- 
+LIST
+  shows all books, link to edit and delete
+
+EDIT/NEW
+  title
+  upload files
+-->
+</div>
