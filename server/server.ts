@@ -6,6 +6,7 @@ var PORT = process.env.PORT || 3000
 import r = module('rethinkdb')
 import exp = module('express')
 import http = module('http')
+import types = module('types')
 var stylus = require('stylus')
 var nib = require('nib')
 var connect = require('connect')
@@ -13,10 +14,9 @@ var path = require('path')
 var basicAuth = require('connect-basic-auth')
 
 import serialize = module('routing/serialize')
-var send = serialize.send
-var code = serialize.send
-var ok = serialize.send
-var err = serialize.send
+var result = serialize.result
+var code = serialize.code
+var ok = serialize.ok
 
 import dbm = module('model/db')
 
@@ -66,24 +66,25 @@ app.use(connect.bodyParser())
 app.use(connect.session({secret: 'funky monkey', key: 'blah', store:new connect.session.MemoryStore()}))
 
 
-
-
-
+/// ARCHITECTURE ////////////////////
+// controller: takes several params, returns a promise. Just in this file until bigger
+// router: maps routes to controllers and controller output to browser
+// model: data stuff. tends to return a rethinkdb expression so they can be composed
 
 /// JAVASCRIPT ///////////////////////
-
+// concatenates all the javascript into a single file, based on CommonJS requires
 app.get('/main.js', browserify('../public/app.js'))
 
 /// CLIENTS //////////////////////////
-app.get('/api/clients', function(req, res) {
-  console.log("GET YER CLIENTS")
-  db.toArray(Clients.all()).then(send(res), err(res))
-})
+app.get('/api/clients', result(function() {
+  return db.run(Clients.all())
+}))
 
-app.post('/api/clients', function(req, res) {
-  console.log("NEW CLIENT", req.body)
-  db.run(Clients.add(req.body)).then(ok(res), err(res))
-})
+app.post('/api/clients', ok(function(params:Object, client:types.Client) {
+  return db.run(Clients.add(client))
+}))
+
+
 
 
 /// GENRES ////////////////////////////
