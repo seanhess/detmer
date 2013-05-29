@@ -74,8 +74,6 @@ declare module "rethinkdb" {
     getAll(key:string, index?:Index):Selection; // without index defaults to primary key
   }
 
-  // selections return a cursor on run, not the other stuff (I'm guessing)
-  // TODO: if you run a get, does it give you a cursor?
   interface Selection extends Sequence, CursorOperation {
     between(lower:any, upper:any, index?:Index):Selection;
     filter(obj:Object):Selection;
@@ -88,7 +86,6 @@ declare module "rethinkdb" {
     delete():WriteOperation;
   }
 
-  // a table, or a filter result
   interface Sequence {
 
     // Join
@@ -122,8 +119,6 @@ declare module "rethinkdb" {
   }
 
 
-
-  // takes an ObjectExpression and returns another
   interface AnyExpressionFunction {
     (doc:ObjectExpression):any; 
   }
@@ -133,15 +128,14 @@ declare module "rethinkdb" {
     (doc:ObjectExpression):ObjectExpression; 
   }
 
-  // will it scream at me for this?
   interface Predicate {
     (doc:ObjectExpression, doc2?:ObjectExpression):BoolExpression; 
     (doc:ObjectExpression, doc2?:ObjectExpression):bool; 
   }
 
   interface Reduce {
-    // TODO, acc should be more specific than that
-    (acc:any, val:any):any; // return acc.add(val) 
+    // TODO, do I know anything about the type of acc and val?
+    (acc:any, val:any):any;
   }
 
   interface InsertOptions {

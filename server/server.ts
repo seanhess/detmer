@@ -18,18 +18,20 @@ var result = serialize.result
 var code = serialize.code
 var ok = serialize.ok
 
-import dbm = module('model/db')
+import rc = module('model/RethinkConnection')
 
 // import Book = module('model/Book')
 import Clients = module('model/ClientsModel')
 
 var browserify = require('browserify-middleware')
 
-var db = new dbm.Db();
+var connection = new rc.Main();
+function db(op) { return connection.run(op) }
+
 export var app:exp.ServerApplication = exp()
 
 function initTables() {
-  db.run(Clients.init(db.db)) // ignore the result
+  db(Clients.init(connection.db)) // ignore the result
   // connected!
   // CONFIG / set up tables, etc
   // conn.run(Book.init(db), ignoreError)
@@ -49,12 +51,12 @@ app.configure("development", () => {
       return stylus(str).use(nib()).import('nib').set('filename', path)
     }
   }))
-  db.connect('detmer', initTables)
+  connection.connect('detmer', initTables)
 })
 
 app.configure("production", () => {
   console.log("PRODUCTION")
-  db.connect('detmer', initTables)
+  connection.connect('detmer', initTables)
 })
 
 // app.configure(() => {})
@@ -77,11 +79,11 @@ app.get('/main.js', browserify('../public/app.js'))
 
 /// CLIENTS //////////////////////////
 app.get('/api/clients', result(function() {
-  return db.run(Clients.all())
+  return db(Clients.all())
 }))
 
 app.post('/api/clients', ok(function(params:Object, client:types.Client) {
-  return db.run(Clients.add(client))
+  return db(Clients.add(client))
 }))
 
 

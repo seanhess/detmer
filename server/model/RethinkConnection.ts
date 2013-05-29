@@ -1,12 +1,13 @@
 ///<reference path='../def/q.d.ts'/>
 
 // Contains some functions to help run rethinkdb queries and return promises
+// basically turns an operation into a promise, and maintains the connection
 
 import q = module('q')
 import r = module('rethinkdb')
 
 
-export class Db {
+export class Main {
 
     public dbname:string;
     public db:r.Db;
@@ -34,7 +35,6 @@ export class Db {
     run(exp:r.AnyOperation) {
         var def = q.defer()
         exp.run(this.conn, function(err:Error, stuff:any) {
-            console.log("RAN", err, stuff)
             if (err) def.reject(err)
             else if (stuff && stuff.toArray) {
                 stuff.toArray(function(err:Error, items:any[]) {
@@ -47,22 +47,6 @@ export class Db {
         return def.promise
     }
 
-    // // I can't subtype my stuff anyway
-    // // hmm, this should NOT be allowed for a selection
-    // // I want to accept anything EXCEPT a cursor. I want to freak out
-    // // because you're going to hit it again :)
-    // run(exp:r.ImmediateOperation) {
-    //     console.log("WAHOO", exp)
-    //     var def = q.defer()
-    //     exp.run(this.conn, function(err:Error, stuff:any) {
-    //       console.log("DONE", err, stuff)
-    //       // TODO detect if stuff is a cursor and automatically call toArray on it?
-    //       if (err) def.reject(err)
-    //       else def.resolve(stuff)
-    //     })
-    //     return def.promise
-    // }
-
     // need to keep track of the connection somehow
     // global is ok I guess. Keep it simple!
     connect(dbname:string, cb:() => void) {
@@ -70,7 +54,7 @@ export class Db {
         this.db = r.db(dbname)
         console.log("rethinkdb://localhost:28015/" + dbname)
         r.connect({host:'localhost', port: 28015}, (err:Error, conn) => {
-            if (err) throw err
+            if (err) throw err // probably means it is OFF, just throw for now
             this.conn = conn;
             r.dbCreate(dbname).run(this.conn, (err:Error, result:r.AdminResult) => {
               // ignore error (It's probably an already created error)
@@ -79,19 +63,6 @@ export class Db {
             })
         })
     }
-
-    // contains(propertyName:string) {
-    //   return function(item:r.IObjectProxy) {
-    //     return item.contains(propertyName)
-    //   }
-    // }
-
-    // property(propertyName:string) {
-    //   return function(item:r.IObjectProxy) {
-    //     return item(propertyName)
-    //   }
-    // }
-
 
 }
 
