@@ -1,7 +1,8 @@
 {
   "name": "Detmer",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "CMS for Detmer",
+  "repository":"ssh://git@bitbucket.org/seanhess/detmer.git",
   "main": "server.js",
   "scripts": {
     "test": "make test"

@@ -75,7 +75,9 @@ app.use(connect.session({secret: 'funky monkey', key: 'blah', store:new connect.
 
 /// JAVASCRIPT ///////////////////////
 // concatenates all the javascript into a single file, based on CommonJS requires
-app.get('/main.js', browserify('../public/app.js'))
+app.get('/main.js', browserify('../public/app.js', {
+    minify: false,
+}))
 
 /// CLIENTS //////////////////////////
 app.get('/api/clients', result(function() {
