@@ -1,11 +1,7 @@
 all: build
 
 build:
-	# tsc -sourcemap server/server.ts public/app.ts
 	tsc server/server.ts public/app.ts
-	# tsc public/app.ts
-	# tsc server/server.ts
-	# tsc server/test/rethinkdb.test.ts
 
 test: build
 	cd server && bin/test test/*.test.js
