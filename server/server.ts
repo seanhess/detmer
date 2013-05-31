@@ -7,8 +7,8 @@ import r = module('rethinkdb')
 import exp = module('express')
 import http = module('http')
 import types = module('types')
-var stylus = require('stylus')
-var nib = require('nib')
+//var sass = require('connect-sass')
+//var compass = require('node-compass')
 var connect = require('connect')
 var path = require('path')
 var basicAuth = require('connect-basic-auth')
@@ -45,12 +45,9 @@ function initTables() {
 
 app.configure("development", () => {
   console.log("DEVELOPMENT")
-  app.use(stylus.middleware({
-    src: '../public',
-    compile: (str, path) => {
-      return stylus(str).use(nib()).import('nib').set('filename', path)
-    }
-  }))
+  //app.use('/css/main.css', sass.serve(__dirname + '/../public/sass/main.scss'))
+  //app.use('/css/main.css', sass.serve(__dirname + '/../public/sass/main.scss'))
+  //app.use(compass({ }))
   connection.connect('detmer', initTables)
 })
 

@@ -9,9 +9,15 @@ Clone the repository
     git clone URL
     cd detmer
 
+Install SASS
+
+    gem install sass
+    gem install modular-scale
+
 Install dependencies
 
     make install
+
 
 Running
 -------

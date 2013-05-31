@@ -2,19 +2,16 @@
   "name": "Detmer",
   "version": "0.0.1",
   "description": "CMS for Detmer",
-  "repository":"ssh://git@bitbucket.org/seanhess/detmer.git",
+  "repository": "",
   "main": "server.js",
   "scripts": {
     "test": "make test"
   },
-  "repository": "",
   "author": "Sean Hess",
   "license": "Commercial",
   "dependencies": {
     "express": "~3.0.6",
     "bower": "~0.6.8",
-    "stylus": "~0.32.0",
-    "nib": "~0.9.1",
     "connect": "~2.7.2",
     "async": "~0.1.22",
     "knox": "~0.4.6",
@@ -26,7 +23,10 @@
     "underscore": "~1.4.4",
     "connect-basic-auth": "~0.1.0",
     "browserify-middleware": "~1.10.0",
-    "rethinkdb": "~1.5.0-0"
+    "rethinkdb": "~1.5.0-0",
+    "node-sass": "~0.5.1",
+    "connect-sass": "~0.3.0",
+    "node-compass": "~0.2.0"
   },
   "devDependencies": {
     "mocha": "~1.8.1",

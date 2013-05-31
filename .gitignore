@@ -24,3 +24,6 @@ public/components
 
 *.lock
 
+.sass-cache
+*.css
+
