@@ -1,9 +1,11 @@
 // Your custom SCSS should be written here...
 
-button {
-  @extend .medium;
-  @extend .primary;
-  @extend .btn;
-  color: white;
+.main {
+  @extend .row;
+}
+
+.clients {
+  @extend .fourteen;
+  @extend .columns;
 }
 
