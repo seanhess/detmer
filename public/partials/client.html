@@ -1,0 +1,23 @@
+<div class="clientDetails">
+    <h2>Edit Client</h2>
+    <!--<div>{{client.name}}</div>-->
+    <form>
+        <div class="row">
+            <div class="five columns">
+            <div class="field">
+                <label class="inline" for="name">Name</label>
+                <input id="name" class="wide text input" ng-model="client.name" placeholder="Name">
+            </div>
+            <div class="field">
+                <label class="inline" for="score">Success Score</label>
+                <input id="score" class="normal number input" type="number" ng-model="client.score" placeholder="100">
+            </div>       
+            </div>
+        </div>
+        <div class="row">
+            <div class="btn primary medium icon-left icon-floppy"><a ng-click="save()">Save</a></div>
+            <div class="btn danger medium icon-left icon-trash"><a ng-click="delete()">Remove</a></div>
+        </div>
+    </form>
+    
+<div>

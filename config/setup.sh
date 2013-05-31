@@ -1,6 +1,6 @@
 # just a list to remember what I did to set up an individual server
 
-apt-get -y install git nginx
+apt-get -y install git nginx ruby rubygems
 
 apt-get -y install python-software-properties python g++ make
 add-apt-repository -y ppa:chris-lea/node.js

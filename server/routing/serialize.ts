@@ -2,7 +2,7 @@ import exp = module('express')
 import q = module('q')
 
 export interface ControllerAction {
-  (params?:Object, body?:Object):q.IPromise;
+  (params:any, body:any):q.IPromise;
 }
 
 // TODO validation
@@ -34,14 +34,14 @@ export function result(action:ControllerAction) {
 }
 
 // ignores the result and sends a 200 when the promise resolves
-export function ok(action) {
+export function ok(action:ControllerAction) {
   return function(req:exp.ServerRequest, res:exp.ServerResponse) {
     action(req.params, req.body)
     .then(sendCode(res, 200), handleError(res))
   }
 }
 
-export function code(statusCode:number, action) {
+export function code(statusCode:number, action:ControllerAction) {
   return function(req:exp.ServerRequest, res:exp.ServerResponse) {
     action(req.params, req.body)
     .then(sendCode(res, statusCode), handleError(res))

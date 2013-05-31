@@ -81,8 +81,21 @@ app.get('/api/clients', result(function() {
   return db(Clients.all())
 }))
 
-app.post('/api/clients', ok(function(params:Object, client:types.Client) {
+app.get('/api/clients/:id', result(function(params:any) {
+  return db(Clients.get(params.id))
+}))
+
+app.put('/api/clients/:id', ok(function(params:any, client:types.Client) {
+  return db(Clients.save(client))
+}))
+
+app.post('/api/clients', result(function(params:Object, client:types.Client) {
   return db(Clients.add(client))
+  .then(Clients.idObject)
+}))
+
+app.del('/api/clients/:id', ok(function(params:any) {
+  return db(Clients.remove(params.id))
 }))
 
 

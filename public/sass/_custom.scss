@@ -5,7 +5,32 @@
 }
 
 .clients {
-  @extend .fourteen;
-  @extend .columns;
+    .header {
+        font-weight: bold;
+        @extend .row;
+    }
+
+    .addButton {
+        @extend .row;
+        @extend .medium;
+        @extend .primary;
+        @extend .btn;
+        margin-bottom: 10px;
+    }
+
+    .name {
+        @extend .three;
+        @extend .columns;
+    }
+
+    .score {
+        @extend .two;
+        @extend .columns;
+    }
+
+    .client {
+        @extend .row;
+    }
 }
+
 

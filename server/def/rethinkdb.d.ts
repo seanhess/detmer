@@ -74,16 +74,18 @@ declare module "rethinkdb" {
     getAll(key:string, index?:Index):Selection; // without index defaults to primary key
   }
 
-  interface Selection extends Sequence, CursorOperation {
+  interface Selection extends Sequence, CursorOperation, Writeable {
     between(lower:any, upper:any, index?:Index):Selection;
     filter(obj:Object):Selection;
     filter(rql:ObjectExpression):Selection;
     filter(rql:Predicate):Selection;
+  }
 
+  interface Writeable {
     update(obj:Object, options?:UpdateOptions):WriteOperation;
     replace(obj:Object, options?:UpdateOptions):WriteOperation;
     replace(expr:AnyExpressionFunction):WriteOperation;
-    delete():WriteOperation;
+    delete():WriteOperation;    
   }
 
   interface Sequence {
@@ -172,7 +174,7 @@ declare module "rethinkdb" {
 
 
 
-  interface Expression {}
+  interface Expression extends Writeable {}
 
   // These do return immediately
   // but the others return

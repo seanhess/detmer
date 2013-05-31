@@ -1,11 +1,17 @@
-
 <div class="clients">
-  <h1>Clients</h1>
-  <div class="medium primary btn"><a ng-click="addClient()">Add Client</a></div>
-  <div class="medium secondary btn"><a>hello</a></div>
-  <div ng-repeat="client in clients">
-  <div>{{client.name}}</div>
-  </div>
+    
+<h1>Clients</h1>
+
+<div class="addButton"><a ng-click="addClient()">Add Client</a></div>
+
+<div class="header">
+    <div class="name">Name</div>
+    <div class="score">Success Score</div>
+</div>
+<div class="client" ng-repeat="client in clients">
+    <div class="name"><a href="/clients/{{client.id}}">{{client.name}}</a></div>
+    <div class="score">{{client.score}}</div>
+</div>
 
 </div>
 
