@@ -8,8 +8,8 @@ test: build
 	cd server && bin/test test/*.test.js
 
 install:
+	gem install compass
 	cd server && npm install && cd ..
-	# gem install compass
 	# bower components will get synched with rsync
 
 upload:
