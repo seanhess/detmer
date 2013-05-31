@@ -76,25 +76,29 @@ app.get('/main.js', browserify('../public/app.js', {
     minify: false,
 }))
 
+interface IdParams {
+  id: string;
+}
+
 /// CLIENTS //////////////////////////
 app.get('/api/clients', result(function() {
   return db(Clients.all())
 }))
 
-app.get('/api/clients/:id', result(function(params:any) {
+app.get('/api/clients/:id', result(function(params:IdParams) {
   return db(Clients.get(params.id))
 }))
 
-app.put('/api/clients/:id', ok(function(params:any, client:types.Client) {
+app.put('/api/clients/:id', ok(function(params:IdParams, client:types.Client) {
   return db(Clients.save(client))
 }))
 
-app.post('/api/clients', result(function(params:Object, client:types.Client) {
+app.post('/api/clients', result(function(params:any, client:types.Client) {
   return db(Clients.add(client))
   .then(Clients.idObject)
 }))
 
-app.del('/api/clients/:id', ok(function(params:any) {
+app.del('/api/clients/:id', ok(function(params:IdParams) {
   return db(Clients.remove(params.id))
 }))
 
