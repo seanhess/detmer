@@ -2,14 +2,13 @@ all: build
 
 build:
 	tsc server/server.ts public/app.ts
-	compass compile public
+	lessc public/css/style.less public/css/style.css
 
 test: build
 	cd server && bin/test test/*.test.js
-
+  
 install:
 	cd server && npm install && cd ..
-	#gem install compass
 	# bower components will get synched with rsync
 
 upload:

@@ -1,0 +1,32 @@
+// it throws this at the bottom :(
+// @import "../vendor/bootstrap/less/bootstrap";
+@import "/vendor/metronic/plugins/bootstrap/css/bootstrap.min.css";
+
+// I need to get bootstrap to load first
+// then the other css
+// then my css
+
+// Just load bootstrap twice I guess
+// except that won't help much I don't think
+
+@import (less) "../vendor/metronic/plugins/font-awesome/css/font-awesome.css";
+@import (less) "../vendor/metronic/css/style-metro.css";
+@import (less) "../vendor/metronic/css/style.css";
+// @import "/vendor/metronic/plugins/bootstrap/css/bootstrap-responsive.min.css";
+@import (less) "../vendor/metronic/css/style-responsive.css";
+@import (less) "../vendor/metronic/css/themes/default.css";
+@import (less) "../vendor/metronic/plugins/uniform/css/uniform.default.css";
+
+body {
+    font-family: 'Open Sans', 'Helvetica', sans-serif;
+}
+
+.header {
+    .brand {
+        width: auto;
+    }
+
+    .hor-menu {
+        margin-left: 10px;
+    }
+}

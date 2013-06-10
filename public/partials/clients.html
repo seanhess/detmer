@@ -1,17 +1,51 @@
-<div class="clients">
+<div ng-include="'/partials/header.html'"></div>
+
+<!-- BEGIN CONTAINER -->   
+<div class="page-container row-fluid full-width-page" >
+  <div class="page-content no-min-height">
+     <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+     <div id="portlet-config" class="modal hide">
+        <div class="modal-header">
+           <button data-dismiss="modal" class="close" type="button"></button>
+           <h3>portlet Settings</h3>
+        </div>
+        <div class="modal-body">
+           <p>Here will be a configuration form</p>
+        </div>
+     </div>
+     <div class="container-fluid">    
+        <h3 class="page-title">Clients</h3>
+        <div class="row-fluid margin-bottom-20">
+
+            <div class="addButton"><button type="button" class="btn red" ng-click="addClient()">Add Client</button></div>
+
+            <table class="table table-striped table-hover">
+                <thead><tr>
+                    <th class="name span4">Name</div>
+                    <th class="score">Success Score</div>
+                </tr></thead>
+                <tr class="client" ng-repeat="client in clients">
+                    <td class="name"><a href="/clients/{{client.id}}">{{client.name}}</a></div>
+                    <td class="score">{{client.score}}</div>
+                </tr>
+            </table>
+
+        </div>
+        <!-- END PAGE CONTENT-->
+     </div>
+     <!-- END PAGE CONTAINER--> 
+  </div>
+  <!-- END PAGE -->    
+</div>
+<!-- END CONTAINER -->
+
+<div ng-include="'/partials/footer.html'"></div>
+
+
+<!-- 
+<div class="clients page-content">
     
 <h1>Clients</h1>
 
-<div class="addButton"><a ng-click="addClient()">Add Client</a></div>
-
-<div class="header">
-    <div class="name">Name</div>
-    <div class="score">Success Score</div>
 </div>
-<div class="client" ng-repeat="client in clients">
-    <div class="name"><a href="/clients/{{client.id}}">{{client.name}}</a></div>
-    <div class="score">{{client.score}}</div>
-</div>
-
-</div>
-
+ -->
