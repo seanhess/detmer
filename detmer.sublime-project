@@ -4,8 +4,8 @@
 		{
 			"follow_symlinks": true,
 			"path": "/Users/seanhess/projects/detmer",
-      "file_exclude_patterns": ["*.css", "*.js", ".vimrc", "*.js.map"],
-      "folder_exclude_patterns": [".git"]
+            "file_exclude_patterns": ["*.css", "*.js", ".vimrc", "*.js.map"],
+            "folder_exclude_patterns": [".git"]
 		}
 	]
 }

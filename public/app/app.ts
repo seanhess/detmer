@@ -3,20 +3,18 @@
 /// <reference path="def/DefinitelyTyped/angularjs/angular-resource.d.ts"/>
 /// <reference path="def/DefinitelyTyped/underscore/underscore.d.ts"/>
 
-import clients = module('controls/clients')
+import clients = module('views/clients')
 
 console.log("Register: App2")
 angular.module('app', ['ngResource'])
 
-.controller("ClientsControl", clients.main)
-.controller("ClientControl", clients.details)
 .factory("Clients", clients.service)
 
 .config(function main($routeProvider: ng.IRouteProvider, $locationProvider: ng.ILocationProvider) {
     console.log("INSIDE ROUTER")
     $locationProvider.html5Mode(true)
-    $routeProvider.when('/clients', {templateUrl: '/partials/clients.html', controller: 'ClientsControl'})
-    $routeProvider.when('/clients/:id', {templateUrl: '/partials/client.html', controller: 'ClientControl'})
+    $routeProvider.when('/clients', {templateUrl: '/app/views/clients.html', controller: clients.main})
+    $routeProvider.when('/clients/:id', {templateUrl: '/app/views/client.html', controller: clients.details})
     // $routeProvider.when('/admin/404', {templateUrl: '/partials/404.html'})
     // $routeProvider.when('/admin', {templateUrl: '/partials/admin.html', controller: "AdminCtrl"})
     // $routeProvider.when('/admin/books/:bookId', {templateUrl: '/partials/book.html', controller: "BookCtrl"})

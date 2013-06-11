@@ -70,7 +70,7 @@ app.use(connect.session({secret: 'funky monkey', key: 'blah', store:new connect.
 
 /// JAVASCRIPT ///////////////////////
 // concatenates all the javascript into a single file, based on CommonJS requires
-app.get('/main.js', browserify('../public/app.js', {
+app.get('/main.js', browserify('../public/app/app.js', {
     minify: false,
 }))
 
@@ -141,7 +141,7 @@ app.get('/info', function(req, res) {
 // Send the Angular app for everything under /admin
 // Be careful not to accidentally send it for 404 javascript files, or data routes
 app.get(/\/[\w\/\-]*$/, function(req, res) {
-  res.sendfile(path.join(__dirname, '..', 'public', 'app.html'))
+  res.sendfile(path.join(__dirname, '..', 'public', 'app', 'app.html'))
 })
 
 

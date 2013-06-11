@@ -1,7 +1,7 @@
 all: build
 
 build:
-	tsc server/server.ts public/app.ts
+	tsc server/server.ts public/app/app.ts
 	lessc public/css/style.less public/css/style.css
 
 test: build
