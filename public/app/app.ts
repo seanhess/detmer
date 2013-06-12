@@ -6,7 +6,7 @@
 import clients = module('views/clients')
 
 console.log("Register: App2")
-angular.module('app', ['ngResource'])
+angular.module('app', ['ngResource', 'ui.bootstrap'])
 
 .factory("Clients", clients.service)
 
@@ -14,7 +14,7 @@ angular.module('app', ['ngResource'])
     console.log("INSIDE ROUTER")
     $locationProvider.html5Mode(true)
     $routeProvider.when('/clients', {templateUrl: '/app/views/clients.html', controller: clients.main})
-    $routeProvider.when('/clients/:id', {templateUrl: '/app/views/client.html', controller: clients.details})
+    $routeProvider.when('/clients/:id', {templateUrl: '/app/views/client_details.html', controller: clients.details})
     // $routeProvider.when('/admin/404', {templateUrl: '/partials/404.html'})
     // $routeProvider.when('/admin', {templateUrl: '/partials/admin.html', controller: "AdminCtrl"})
     // $routeProvider.when('/admin/books/:bookId', {templateUrl: '/partials/book.html', controller: "BookCtrl"})
