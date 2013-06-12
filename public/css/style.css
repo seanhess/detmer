@@ -11262,3 +11262,6 @@ body {
 .header .hor-menu {
   margin-left: 10px;
 }
+.bobby.control-group input {
+  background-color: #F00;
+}

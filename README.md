@@ -92,5 +92,10 @@ Front End Code
 * https://github.com/angular-ui/bootstrap/tree/gh-pages
 
 
+#### Angular Directives
+
+* http://docs.angularjs.org/guide/directive
+* http://blog.omkarpatil.com/2012/11/transclude-in-angularjs.html
+
 
 

@@ -4,11 +4,13 @@
 /// <reference path="def/DefinitelyTyped/underscore/underscore.d.ts"/>
 
 import clients = module('views/clients')
+import formcontrol = module('directives/formcontrol')
 
 console.log("Register: App2")
 angular.module('app', ['ngResource', 'ui.bootstrap'])
 
 .factory("Clients", clients.service)
+.directive("formcontrol", formcontrol.main)
 
 .config(function main($routeProvider: ng.IRouteProvider, $locationProvider: ng.ILocationProvider) {
     console.log("INSIDE ROUTER")

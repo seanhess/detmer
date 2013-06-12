@@ -1,0 +1,11 @@
+<div class="control-group" ng-class="{error: isError(), warning: isWarning(), success: isSuccess()}">
+  <!-- start with just error validation -->
+  <label class="control-label" for="{{name}}">{{label}}</label>
+  <div class="controls input-icon">
+    <span ng-transclude></span>
+    <span ng-class="{'input-error': isError(), 'input-success': isSuccess()}" class="tooltips" data-original-title="{{invalidMessage}}">
+      <i class="icon-exclamation-sign" ng-show="isError()"></i>
+      <i class="icon-ok" ng-show="isSuccess()"></i>
+    </span>
+  </div>
+</div>

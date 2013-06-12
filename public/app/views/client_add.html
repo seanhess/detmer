@@ -7,33 +7,18 @@
 
     <div class="row-fluid">
       <form class="form-vertical"> <!-- form-vertical is the default -->
-        <div class="control-group error">
-          <label class="control-label" for="name">Client Name</label>
-          <div class="controls input-icon">
-            <input type="text" id="name" class="m-wrap span6" placeholder="ABC Corp"/>
-            <span class="input-error tooltips" data-original-title="please write a valid email">
-              <i class="icon-ok"></i>
-            </span>
-          </div>
-        </div>
 
-        <div class="row-fluid">
-          <div class="control-group success">
-            <label class="control-label" for="score">Success Score</label>
-            <div class="controls input-icon">
-              <input id="score" type="text" class="m-wrap span6" ng-model="client.score" placeholder="100"/>
-              <span class="input-success tooltips" data-original-title="please write a valid email">
-                <i class="icon-ok"></i>
-              </span>
-              <!-- <span class="help-block">This is inline help</span> -->
-            </div>
-          </div>
-        </div> 
+        <!-- use less to add span6 to things? -->
+        <formcontrol label="Client Name" error="false" invalidMessage="" success="false">
+            <input id="name" class="span6" type="text" placeholder="ABC Corp" ng-model="name"/>
+        </formcontrol>
+
+        <formcontrol label="Success Score" error="" invalidMessage="">
+            <input id="name" class="span6" type="number" placeholder="100" ng-model="score"/>
+        </formcontrol>
+
       </form>
     </div>
-
-
-
 
   </div>
 
