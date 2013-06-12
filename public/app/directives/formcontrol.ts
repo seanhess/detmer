@@ -20,35 +20,15 @@
 
 
 function controller($scope, $element, $attrs, $transclude) {
-    // $transclude(function(clone) {
-    //     var primaryBlock = $element.find('div.primary-block');
-    //     var secondaryBlock = $element.find('div.secondary-block');
-    //     var transcludedButtons = clone.filter(':button'); 
-    //     angular.forEach(transcludedButtons, function(e) {
-    //         if (angular.element(e).hasClass('primary')) {
-    //             primaryBlock.append(e);
-    //         } else if (angular.element(e).hasClass('secondary')) {
-    //             secondaryBlock.append(e);
-    //         }
-    //     });
-    // });
-
     // WARNING: element does not have the transcluded stuff yet!
-    console.log("IN CONTROLLER", $element)
-
-    // var $input = $element.find('input')
-    // $scope.name = $input.attr('id')
-    // console.log("WHATUP BUDDY", $input)
-    // $input.addClass('m-wrap')
+    // console.log("IN CONTROLLER", $element)
 }
 
-// function compile(element, attr, transclude) {
-
-// }
+function compile(element, attr, transclude) { }
 
 function link($scope, $element, $attrs) {
     // console.log("IN LINK", element.html())
-    var $input = $element.find('input')
+    var $input = $element.find('input,select')
     $scope.name = $input.attr('id')
     $input.addClass('m-wrap')
 }
@@ -70,8 +50,10 @@ export function main():ng.IDirective {
             isWarning: '&warning',
             isSuccess: '&success',
             invalidMessage: '@invalidMessage',
+            help: '@',
         },
-        controller: controller,
+        // controller: controller,
+        // compile: compile,
         link: link,
     }
 }

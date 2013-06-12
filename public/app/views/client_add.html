@@ -1,24 +1,66 @@
-<div class="modal" role="dialog">
+<div class="modal client_add" role="dialog">
+
   <div class="modal-header">
-    <h3 class="page-title">Edit Client</h3>
+    <h3 class="page-title">Add a New Client</h3>
   </div>
 
   <div class="modal-body">
 
-    <div class="row-fluid">
-      <form class="form-vertical"> <!-- form-vertical is the default -->
+    <form class="form-vertical"> 
 
-        <!-- use less to add span6 to things? -->
-        <formcontrol label="Client Name" error="false" invalidMessage="" success="false">
-            <input id="name" class="span6" type="text" placeholder="ABC Corp" ng-model="name"/>
+      <div class="row-fluid">
+
+        <div class="span6">
+        <formcontrol label="Client Name" error="false" invalid-message="" success="false">
+            <input id="name" class="span12" type="text" placeholder="ABC Corp" ng-model="client.name"/>
         </formcontrol>
+        </div>
 
-        <formcontrol label="Success Score" error="" invalidMessage="">
-            <input id="name" class="span6" type="number" placeholder="100" ng-model="score"/>
+        <div class="span3">
+        <formcontrol label="Client Type">
+            <select id="type" class="span12" ng-model="client.type">
+                <option value="">Select...</option>
+                <option value="asdf">asdf</option>
+            </select>
         </formcontrol>
+        </div>
 
-      </form>
-    </div>
+        <div class="span3">
+        <formcontrol label="Success Cycle">
+            <select id="successCycle" class="span12">
+                <option value="">Select...</option>
+                <option value="asdf">asdf</option>
+            </select>
+        </formcontrol>
+        </div>
+      </div>
+
+      <div class="row-fluid">
+        <div class="span4">
+        <formcontrol label="Key Contact" help="Name">
+            <input id="contact_name" type="text" class="span12"/>
+        </formcontrol>
+        </div>
+
+        <div class="span3">
+        <formcontrol  help="Title">
+            <input id="contact_title" type="text" class="span12"/>
+        </formcontrol>
+        </div>
+
+        <div class="span3">
+        <formcontrol help="Email">
+            <input id="contact_email" type="text" class="span12"/>
+        </formcontrol>
+        </div>
+
+        <div class="span2">
+        <formcontrol help="Phone">
+            <input id="contact_phone" type="text" class="span12"/>
+        </formcontrol>
+        </div>
+      </div>
+    </form>
 
   </div>
 

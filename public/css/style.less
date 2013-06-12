@@ -31,15 +31,18 @@ body {
     }
 }
 
-.bobby.control-group {
-    input {
-        background-color: #F00;
-        &:extend(.span6);
-        &:extend(.m-wrap);
-    }
-}
-
 div.main_content {
     &:extend(.full-width-page);
     &:extend(.page-content);
+}
+
+label.control-label {
+    min-height: 20px;
+}
+
+
+div.client_add {
+    @width: 800px;
+    width: @width;
+    margin-left: (-@width / 2);
 }

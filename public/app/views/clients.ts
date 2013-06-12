@@ -50,6 +50,9 @@ export function main($scope:any, $location:ng.ILocationService, Clients:Service,
 export function add($scope:any, dialog, Clients:Service) {
     $scope.client = {}
     console.log("DETAILS CONTROLLER", $scope.client)
+
+    $scope.types = ["fake"];
+
     $scope.save = function() {
         dialog.close($scope.client)
     }

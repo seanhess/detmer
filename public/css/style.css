@@ -11262,6 +11262,10 @@ body {
 .header .hor-menu {
   margin-left: 10px;
 }
-.bobby.control-group input {
-  background-color: #F00;
+label.control-label {
+  min-height: 20px;
+}
+div.client_add {
+  width: 800px;
+  margin-left: -400px;
 }
