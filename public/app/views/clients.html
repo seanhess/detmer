@@ -15,7 +15,7 @@
               <th class="name">Name</th>
               <th class="score">Success Score</th>
           </tr></thead>
-          <tr class="client" ng-repeat="client in clients" ng-click="clientDetails(client)">
+          <tr class="client" ng-repeat="client in clients | orderBy:'name'" ng-click="clientDetails(client)">
               <td class="name"><a href="/clients/{{client.id}}">{{client.name}}</a></td>
               <td class="score">{{client.score}}</td>
           </tr>

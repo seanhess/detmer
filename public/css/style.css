@@ -11262,6 +11262,9 @@ body {
 .header .hor-menu {
   margin-left: 10px;
 }
+div.main_content {
+  padding-bottom: 20px;
+}
 label.control-label {
   min-height: 20px;
 }

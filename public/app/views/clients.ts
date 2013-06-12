@@ -1,4 +1,5 @@
 
+import types = module('../types')
 
 // client service
 export interface Service extends ng.resource.IResourceClass {
@@ -21,15 +22,15 @@ export function main($scope:any, $location:ng.ILocationService, Clients:Service,
         $scope.clients = Clients.query()        
     }
 
-    $scope.clientDetails = function(client) {
+    $scope.clientDetails = function(client:types.Client) {
         $location.path("/clients/" + client.id)
     }
 
-    $scope.addClient = function(client) {
+    $scope.addClient = function(client:types.Client) {
         Clients.save(client, load)
     }
 
-    $scope.openAddClient = function(client) {
+    $scope.openAddClient = function(client:types.Client) {
         $dialog.dialog({
             backdrop: true,
             keyboard: true,
@@ -39,7 +40,7 @@ export function main($scope:any, $location:ng.ILocationService, Clients:Service,
             templateUrl:  '/app/views/client_add.html',
             controller: add
         })
-        .open().then(function(client) {
+        .open().then(function(client:types.Client) {
             if (client) $scope.addClient(client)
         })
     }
@@ -48,7 +49,7 @@ export function main($scope:any, $location:ng.ILocationService, Clients:Service,
 
 
 export function add($scope:any, dialog, Clients:Service) {
-    $scope.client = {}
+    $scope.client = {score: Math.floor(Math.random()*100)}
     console.log("DETAILS CONTROLLER", $scope.client)
 
     $scope.types = ["fake"];
