@@ -16,10 +16,13 @@ export function init(connection:rc.Main) {
 }
 
 export function byClient(clientId:string) {
-    return dispositions.getAll(clientId, clientIdIndex)
+    return dispositions
+    .getAll(clientId, clientIdIndex)
+    .orderBy('clientId')
 }
 
 export function addToClient(clientId:string, disposition:types.Disposition) {
     disposition.clientId = clientId
+    disposition.created = (new Date()).toISOString()
     return dispositions.insert(disposition)
 }

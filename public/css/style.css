@@ -11266,6 +11266,34 @@ Bootstrap Datepickers Restyle(in v1.2.4)
 .component-disposition-selector .disposition:hover {
   opacity: 1.0;
 }
+.disposition-chart-template .disposition {
+  width: 8px;
+  height: 15px;
+  display: inline-block;
+  margin: 1px;
+  position: relative;
+}
+.disposition-chart-template .disposition_1 {
+  height: 20px;
+  top: 21px;
+}
+.disposition-chart-template .disposition_2 {
+  height: 10px;
+  top: 11px;
+}
+.disposition-chart-template .disposition_3 {
+  height: 6.666666666666667px;
+  top: 6.666666666666667px;
+}
+.disposition-chart-template .disposition_4 {
+  height: 6.666666666666667px;
+}
+.disposition-chart-template .disposition_5 {
+  height: 10px;
+}
+.disposition-chart-template .disposition_6 {
+  height: 20px;
+}
 body {
   font-family: 'Open Sans', 'Helvetica', sans-serif;
 }
@@ -11333,6 +11361,10 @@ div.client-disposition .disposition-selector {
 }
 div.client-disposition .history {
   border-top: solid 1px #EEE;
+}
+div.client-disposition .disposition-chart-inline {
+  margin-top: 10px;
+  height: 50px;
 }
 .disposition-popover {
   display: block;

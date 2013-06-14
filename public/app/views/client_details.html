@@ -40,7 +40,7 @@
                             <disposition-selector on-select="selectDisposition(disposition, $event)"></disposition-selector>
                         </div>
                         <div class="history">
-                            <img src="/img/disposition_history_placeholder.png">
+                            <disposition-chart class="disposition-chart-inline" max="30" dispositions="dispositions"></disposition-chart>
                         </div>
                         <div><a href="/clients/{{clientId}}/disposition_history">History <i class="icon-external-link"></i></a></div>
                     </div>

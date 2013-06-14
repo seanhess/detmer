@@ -8,6 +8,7 @@ import Client = module('services/Client')
 import Disposition = module('services/Disposition')
 import formcontrol = module('directives/formcontrol')
 import dispositionSelector = module('directives/dispositionSelector')
+import dispositionChart = module('directives/dispositionChart')
 import popup = module('directives/popup')
 
 import toKey = module('filters/toKey')
@@ -19,8 +20,10 @@ angular.module('app', ['ngResource', 'ui.bootstrap'])
 .factory("DispositionService", Disposition.main)
 
 .directive("formcontrol", formcontrol.main)
-.directive("dispositionSelector", dispositionSelector.main)
 .directive("popup", popup.main)
+
+.directive("dispositionSelector", dispositionSelector.main)
+.directive("dispositionChart", dispositionChart.main)
 
 .filter("toKey", toKey.main)
 

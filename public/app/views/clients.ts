@@ -53,8 +53,11 @@ export function details($scope:any, $routeParams:any, ClientService:Client.Servi
     var clientId = $routeParams.id
     $scope.clientId = clientId;
     $scope.client = <types.Client> <any> ClientService.get({id:clientId})
-
-    $scope.dispositions = DispositionService.query({clientId:clientId})
+    loadDispositions()
+    
+    function loadDispositions() {
+        $scope.dispositions = DispositionService.query({clientId:clientId})    
+    }
 
     $scope.remove = function() {
         ClientService.remove({id:clientId})
@@ -73,8 +76,7 @@ export function details($scope:any, $routeParams:any, ClientService:Client.Servi
     $scope.updateDisposition = function() {
         var disposition = $scope.newDisposition;
         disposition.clientId = clientId
-        console.log("CHECK", disposition)
-        DispositionService.save(disposition)
+        DispositionService.save(disposition, loadDispositions)
         $scope.cancelDisposition()
     }
 }
