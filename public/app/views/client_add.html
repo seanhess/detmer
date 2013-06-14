@@ -7,18 +7,16 @@
   <div class="modal-body">
 
     <form class="form-vertical"> 
-
       <div class="row-fluid">
-
         <div class="span6">
-        <formcontrol label="Client Name" error="false" invalid-message="" success="false">
-            <input id="name" class="span12" type="text" placeholder="ABC Corp" ng-model="client.name"/>
+        <formcontrol label="Client Name" error="false" invalid-message="asdfasdf">
+            <input id="name" type="text" placeholder="ABC Corp" ng-model="client.name"/>
         </formcontrol>
         </div>
 
         <div class="span3">
         <formcontrol label="Client Type">
-            <select id="type" class="span12" ng-model="client.type">
+            <select id="type" ng-model="client.type">
                 <option value="">Select...</option>
                 <option value="asdf">asdf</option>
             </select>
@@ -27,7 +25,7 @@
 
         <div class="span3">
         <formcontrol label="Success Cycle">
-            <select id="successCycle" class="span12">
+            <select id="successCycle">
                 <option value="">Select...</option>
                 <option value="asdf">asdf</option>
             </select>
@@ -36,27 +34,33 @@
       </div>
 
       <div class="row-fluid">
-        <div class="span4">
+        <div class="span3">
         <formcontrol label="Key Contact" help="Name">
-            <input id="contact_name" type="text" class="span12" ng-model="client.contactName"/>
+            <input id="contact_name" type="text" ng-model="client.contactName"/>
         </formcontrol>
         </div>
 
         <div class="span3">
-        <formcontrol  help="Title">
-            <input id="contact_title" type="text" class="span12" ng-model="client.contactTitle"/>
+        <formcontrol help="Title">
+            <input id="contact_title" type="text" ng-model="client.contactTitle"/>
         </formcontrol>
         </div>
 
         <div class="span3">
         <formcontrol help="Email">
-            <input id="contact_email" type="text" class="span12" ng-model="client.contactEmail"/>
+            <div class="input-icon left">
+              <i class="icon-envelope"></i>
+              <input id="contact_email" type="text" ng-model="client.contactEmail"/>
+            </div>
         </formcontrol>
         </div>
 
-        <div class="span2">
+        <div class="span3">
         <formcontrol help="Phone">
-            <input id="contact_phone" type="text" class="span12" ng-model="client.contactPhone"/>
+            <div class="input-icon left">
+              <i class="icon-phone"></i>
+              <input id="contact_phone" type="text" ng-model="client.contactPhone"/>
+            </div>
         </formcontrol>
         </div>
       </div>
@@ -65,8 +69,11 @@
   </div>
 
   <div class="modal-footer">
-    <button class="btn" ng-click="close()">Cancel</button>
-    <button class="btn green" ng-click="save()"><i class="icon-save"></i> Save Client</button>
+    <a href="#">Import Clients <i class="icon-chevron-right"></i></a>
+    <div class="pull-left">
+      <button class="btn green" ng-click="save()"><i class="icon-save"></i> Save Client</button>
+      <button class="btn" ng-click="close()">Cancel</button>
+    </div>
   </div>
 </div>
 

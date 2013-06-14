@@ -7217,7 +7217,8 @@ Header and header elements.
 /***
 Page container
 ***/
-.page-container {
+.page-container,
+div.main-content {
   margin: 0px;
   padding: 0px;
 }
@@ -7558,7 +7559,7 @@ Sidebar toggler(show/hide)
 Page content
 ***/
 .page-content,
-div.main_content {
+div.main-content {
   margin-top: 0px;
   padding: 0px;
   background-color: #fff;
@@ -11262,8 +11263,11 @@ body {
 .header .hor-menu {
   margin-left: 10px;
 }
-div.main_content {
-  padding-bottom: 20px;
+.container-fluid {
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 label.control-label {
   min-height: 20px;
@@ -11271,4 +11275,40 @@ label.control-label {
 div.client_add {
   width: 800px;
   margin-left: -400px;
+}
+.modal-footer a {
+  line-height: 40px;
+}
+div.clients .header {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+div.clients .header .data_visualization {
+  background-color: #CA8D32;
+  height: 250px;
+}
+div.clients .header .overlay {
+  position: absolute;
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100px;
+  width: 100%;
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: white;
+}
+div.clients .clients-list {
+  padding-top: 20px;
+}
+div.client_details .client_header {
+  height: 150px;
+  background-color: #CCC;
+}
+div.client_details .client_stats {
+  height: 100px;
+  background-color: #EEE;
 }

@@ -31,19 +31,37 @@ body {
     }
 }
 
-div.main_content {
+
+
+div.main-content {
+    // page-content: no padding. white background;
+    // full-width-page and page-container: remove responsive sidebar;
+    &:extend(.page-container);
     &:extend(.full-width-page);
     &:extend(.page-content);
-    padding-bottom: 20px;
+}
+
+// container-fluid: 100% wide background with padding on all sides
+// this makes headers <h3> look bad because of the extra padding
+.container-fluid {
+    padding: 20px;
+    .box-sizing(border-box);
 }
 
 label.control-label {
     min-height: 20px;
 }
 
-
 div.client_add {
     @width: 800px;
     width: @width;
     margin-left: (-@width / 2);
 }
+
+.modal-footer {
+    a {
+        line-height: 40px;
+    }
+}
+
+@import "../app/views/clients";

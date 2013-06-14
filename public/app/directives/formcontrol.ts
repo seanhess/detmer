@@ -31,6 +31,8 @@ function link($scope, $element, $attrs) {
     var $input = $element.find('input,select')
     $scope.name = $input.attr('id')
     $input.addClass('m-wrap')
+    $input.addClass('span12')
+
 }
 
 (<any> controller).$inject = ['$scope', '$element', '$attrs', '$transclude']
