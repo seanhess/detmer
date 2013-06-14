@@ -15,3 +15,9 @@ export interface Client {
     contactPhone: string;
     contactEmail: string;
 }
+
+
+export interface Disposition {
+    name: string;
+    value: number;
+}

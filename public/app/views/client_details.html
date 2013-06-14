@@ -9,6 +9,7 @@
     </div>
 
     <div class="body container-fluid">
+
         <div class="row-fluid">
             <div class="span7">
                 <div class="portlet box blue">
@@ -22,16 +23,58 @@
                 </div>
             </div>
             <div class="span5">
-                <div class="portlet box blue">
+
+
+
+                <!-- CLIENT DISPOSITION -->
+                <div class="portlet box blue client-disposition">
                     <div class="portlet-title">
                         <div class="caption"><i class="icon-asterisk"></i> Disposition</div>
                         <div class="tools">
                         </div>
                     </div>
                     <div class="portlet-body">
-                        body
+
+                        <div class="client-disposition-selector">
+                            <div class="instructions">How are they today?</div>
+                            <disposition-selector on-select="selectDisposition(disposition, $event)"></disposition-selector>
+                        </div>
+                        <div class="history">
+                            <img src="/img/disposition_history_placeholder.png">
+                        </div>
+                        <div><a href="/clients/{{clientId}}/disposition_history">History <i class="icon-external-link"></i></a></div>
                     </div>
+
+                    <!-- DISPOSITION POPUP -->
+                    <!-- 
+                        popup: needs to know where to put it! 
+                        need to give it some kind of anchor
+                        they both bind to it
+                    -->
+                    <popup class="disposition-popover" title="select disposition" anchor="popupAnchor">
+                        <div class="selected-disposition-label disposition_{{newDisposition.value}}">{{newDisposition.name}}</div>
+                        <div class="reasons">
+                            <label class="because">Because</label>
+                            <div>
+                                <select id="disposition_reason" ng-model="fatzo">
+                                    <option value="">Select...</option>
+                                    <option value="asdf">Something</option>
+                                </select>
+                            </div>
+                            <a class="add" href=""><i class="icon-plus"></i> Add Another</a>
+                        </div>
+                        <div class="buttons">
+                            <button class="btn green" ng-click="updateDisposition()">Update</button>
+                            <a class="cancel pull-right" href="#" ng-click="cancelDisposition()">Cancel</a>
+                        </div>
+                    </popup>
                 </div>
+
+
+
+
+
+
                 <div class="portlet box blue">
                     <div class="portlet-title">
                         <div class="caption"><i class="icon-asterisk"></i> Products</div>
@@ -44,12 +87,10 @@
                 </div>
             </div>
         </div>
+
+        <div><button class="btn red" ng-click="remove()"><i class="icon-remove"></i> Delete Client</button></div>
     </div>
-
-<!--             
-            <div><pre>{{client}}</pre></div>
-            <div><button class="btn red" ng-click="remove()"><i class="icon-remove"></i> Delete Client</button></div>
- -->      
-
+</div>
+    
 
 </div>

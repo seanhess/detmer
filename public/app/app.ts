@@ -4,13 +4,25 @@
 /// <reference path="def/DefinitelyTyped/underscore/underscore.d.ts"/>
 
 import clients = module('views/clients')
+import Client = module('services/Client')
+import Disposition = module('services/Disposition')
 import formcontrol = module('directives/formcontrol')
+import dispositionSelector = module('directives/dispositionSelector')
+import popup = module('directives/popup')
+
+import toKey = module('filters/toKey')
 
 console.log("Register: App2")
 angular.module('app', ['ngResource', 'ui.bootstrap'])
 
-.factory("Clients", clients.service)
+.factory("ClientService", Client.main)
+.factory("DispositionService", Disposition.main)
+
 .directive("formcontrol", formcontrol.main)
+.directive("dispositionSelector", dispositionSelector.main)
+.directive("popup", popup.main)
+
+.filter("toKey", toKey.main)
 
 .config(function main($routeProvider: ng.IRouteProvider, $locationProvider: ng.ILocationProvider) {
     console.log("INSIDE ROUTER")

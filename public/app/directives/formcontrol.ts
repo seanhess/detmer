@@ -39,8 +39,7 @@ function link($scope, $element, $attrs) {
 
 export function main():ng.IDirective {
     return {
-        // Only element and class style. Attributes don't make sense
-        restrict: 'EC',
+        restrict: 'ECAM', // can work as an attribute too. <div formcontrol>
         templateUrl: '/app/directives/formcontrol.html',
 
         // replaces the element instead of appending

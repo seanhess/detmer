@@ -1,25 +1,11 @@
-
 import types = module('../types')
+import Client = module('../services/Client')
 
-// client service
-export interface Service extends ng.resource.IResourceClass {
-    update:ng.resource.IActionCall;
-}
-
-export function service($http: ng.IHttpService, $resource: ng.resource.IResourceService):Service {
-    var Clients:Service = <any> $resource("/api/clients/:id", {}, {
-        update: {method:'PUT', params:{id:"@id"}}
-    })
-    return Clients
-}
-
-
-
-export function main($scope:any, $location:ng.ILocationService, Clients:Service, $dialog) {
+export function main($scope:any, $location:ng.ILocationService, ClientService:Client.Service, $dialog) {
     load()
 
     function load() {
-        $scope.clients = Clients.query()        
+        $scope.clients = ClientService.query()        
     }
 
     $scope.clientDetails = function(client:types.Client) {
@@ -27,7 +13,7 @@ export function main($scope:any, $location:ng.ILocationService, Clients:Service,
     }
 
     $scope.addClient = function(client:types.Client) {
-        Clients.save(client, load)
+        ClientService.save(client, load)
     }
 
     $scope.openAddClient = function(client:types.Client) {
@@ -48,9 +34,8 @@ export function main($scope:any, $location:ng.ILocationService, Clients:Service,
 
 
 
-export function add($scope:any, dialog, Clients:Service) {
+export function add($scope:any, dialog, ClientService:Client.Service) {
     $scope.client = {score: Math.floor(Math.random()*100)}
-    console.log("DETAILS CONTROLLER", $scope.client)
 
     $scope.types = ["fake"];
 
@@ -62,12 +47,28 @@ export function add($scope:any, dialog, Clients:Service) {
     }
 }
 
-export function details($scope:any, $routeParams:any, Clients:Service, $location:ng.ILocationService) {
+
+export function details($scope:any, $routeParams:any, ClientService:Client.Service, $location:ng.ILocationService) {
     var clientId = $routeParams.id
-    $scope.client = Clients.get({id:clientId})
+    $scope.clientId = clientId;
+    $scope.client = <types.Client> <any> ClientService.get({id:clientId})
     $scope.remove = function() {
-        Clients.remove({id:clientId})
+        ClientService.remove({id:clientId})
         $location.path("/clients")
+    }
+
+    $scope.selectDisposition = function(dispostion:types.Disposition, $event) {
+        $scope.newDisposition = dispostion
+        $scope.popupAnchor = $event.currentTarget
+    }
+
+    $scope.cancelDisposition = function() {
+        $scope.popupAnchor = null
+    }
+
+    $scope.updateDisposition = function() {
+        var disposition = $scope.newDisposition;
+        $scope.cancelDisposition()
     }
 }
 
