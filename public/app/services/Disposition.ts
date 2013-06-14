@@ -2,12 +2,12 @@
 import types = module('../types')
 
 // client service
-export interface Service {
+export interface Service extends ng.resource.IResourceClass {
     allDispositions():types.Disposition;
 }
 
 export function main($resource: ng.resource.IResourceService):Service {
-    var Disposition = <any> {}
+    var Disposition = <any> $resource("/api/clients/:clientId/dispositions", {clientId: '@clientId'})
 
     Disposition.allDispositions = function() {
         return [

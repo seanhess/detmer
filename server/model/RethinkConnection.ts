@@ -19,7 +19,7 @@ export class Main {
       return !!this.conn
     }
 
-    toArray(exp:r.CursorOperation) {
+    toArray(exp:r.CursorOperation):q.IPromise {
         var def = q.defer()
         // somethihng that has a cursor
         exp.run(this.conn, function(err:Error, cursor:r.Cursor) {
@@ -32,7 +32,7 @@ export class Main {
         return def.promise
     }
 
-    run(exp:r.AnyOperation) {
+    run(exp:r.AnyOperation):q.IPromise {
         var def = q.defer()
         exp.run(this.conn, function(err:Error, stuff:any) {
             if (err) def.reject(err)

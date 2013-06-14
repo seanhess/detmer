@@ -1,5 +1,6 @@
 import types = module('../types')
 import Client = module('../services/Client')
+import Disposition = module('../services/Disposition')
 
 export function main($scope:any, $location:ng.ILocationService, ClientService:Client.Service, $dialog) {
     load()
@@ -48,10 +49,13 @@ export function add($scope:any, dialog, ClientService:Client.Service) {
 }
 
 
-export function details($scope:any, $routeParams:any, ClientService:Client.Service, $location:ng.ILocationService) {
+export function details($scope:any, $routeParams:any, ClientService:Client.Service, DispositionService:Disposition.Service, $location:ng.ILocationService) {
     var clientId = $routeParams.id
     $scope.clientId = clientId;
     $scope.client = <types.Client> <any> ClientService.get({id:clientId})
+
+    $scope.dispositions = DispositionService.query({clientId:clientId})
+
     $scope.remove = function() {
         ClientService.remove({id:clientId})
         $location.path("/clients")
@@ -68,6 +72,9 @@ export function details($scope:any, $routeParams:any, ClientService:Client.Servi
 
     $scope.updateDisposition = function() {
         var disposition = $scope.newDisposition;
+        disposition.clientId = clientId
+        console.log("CHECK", disposition)
+        DispositionService.save(disposition)
         $scope.cancelDisposition()
     }
 }

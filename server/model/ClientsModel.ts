@@ -1,11 +1,17 @@
 import r = module('rethinkdb')
 import types = module('../types')
+import rc = module('./RethinkConnection')
+import q = module('q')
 
 // I should make a crud thing
 var clients = r.table('clients')
 
-export function init(db:r.Db) {
-    return db.tableCreate('clients')
+export function init(connection:rc.Main) {
+    console.log("init ClientsModel")
+    function run(q) { return connection.run(q) }
+    return run(connection.db.tableCreate('clients'))
+    // .fin(() => run(dispositions.indexCreate('clientId')))
+    .fin(() => true) // ignore the error
 }
 
 export function all() {
@@ -26,8 +32,4 @@ export function add(client:types.Client) {
 
 export function remove(id:string) {
     return get(id).delete()
-}
-
-export function idObject(result:r.WriteResult):Object {
-  return {id: result.generated_keys[0]}
 }

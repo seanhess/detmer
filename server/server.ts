@@ -20,6 +20,8 @@ import rc = module('model/RethinkConnection')
 
 // import Book = module('model/Book')
 import Clients = module('model/ClientsModel')
+import Dispositions = module('model/DispositionModel')
+import common = module('model/common')
 
 var browserify = require('browserify-middleware')
 
@@ -29,7 +31,13 @@ function db(op) { return connection.run(op) }
 export var app:exp.ServerApplication = exp()
 
 function initTables() {
-  db(Clients.init(connection.db)) // ignore the result
+  console.log("initTables()")
+  Clients.init(connection)
+  .fin(() => Dispositions.init(connection))
+  .fin(() => console.log(" - done"))
+  // .fail(function(err) {
+  //     throw err
+  // })
   // connected!
   // CONFIG / set up tables, etc
   // conn.run(Book.init(db), ignoreError)
@@ -75,31 +83,40 @@ app.get('/main.js', browserify('../public/app/app.js', {
 }))
 
 interface IdParams {
-  id: string;
+    id: string;
 }
 
 /// CLIENTS //////////////////////////
 app.get('/api/clients', result(function() {
-  return db(Clients.all())
+    return db(Clients.all())
 }))
 
 app.get('/api/clients/:id', result(function(params:IdParams) {
-  return db(Clients.get(params.id))
+    return db(Clients.get(params.id))
 }))
 
 app.put('/api/clients/:id', ok(function(params:IdParams, client:types.Client) {
-  return db(Clients.save(client))
+    return db(Clients.save(client))
 }))
 
 app.post('/api/clients', result(function(params:any, client:types.Client) {
-  return db(Clients.add(client))
-  .then(Clients.idObject)
+    return db(Clients.add(client))
+    .then(common.idObject)
 }))
 
 app.del('/api/clients/:id', ok(function(params:IdParams) {
-  return db(Clients.remove(params.id))
+    return db(Clients.remove(params.id))
 }))
 
+/// DISPOSITION ////////////////////////
+app.get('/api/clients/:id/dispositions', result(function(params:IdParams) {
+    return db(Dispositions.byClient(params.id))
+}))
+
+app.post('/api/clients/:id/dispositions', result(function(params:IdParams, disposition:types.Disposition) {
+    return db(Dispositions.addToClient(params.id, disposition))
+    .then(common.idObject)
+}))
 
 
 

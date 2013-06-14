@@ -17,7 +17,9 @@ export interface Client {
 }
 
 
+// or we could store them on the client... later :)
 export interface Disposition {
     name: string;
     value: number;
+    clientId: string;
 }
